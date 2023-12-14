@@ -22,7 +22,7 @@ void tftp_get(char *file_name, char *server) {
     // Create a socket
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0) {
-        perror("Erreur lors de la création du socket");
+        perror("Socket creation error");
         exit(EXIT_FAILURE);
     }
 
@@ -42,7 +42,7 @@ void tftp_get(char *file_name, char *server) {
     char request[512];
     create_request(RRQ, file_name, "octet", request);
     if (sendto(sockfd, request, strlen(request)+1, 0, res->ai_addr, res->ai_addrlen) < 0) {
-        perror("Erreur lors de l'envoi de la requête RRQ");
+        perror("Error sending RRQ request");
         exit(EXIT_FAILURE);
     }
 
