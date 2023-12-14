@@ -18,18 +18,6 @@
  * @param file_name the name of the file to read
  * @param the address of the TFTP server
  */
-void tftp_get(char *file_name, char *server);
-
-/**
- * @brief Creates a RRQ request or a WRD request.
- *
- * @param opcode the operation code (RRQ or WRQ)
- * @param file_name the name of the file to handle
- * @param mode the transfer mode ('octet' for binary transfer)
- * @param request the character array in which the request is stored
- */
-void create_request(int opcode, char *file_name, char *mode, char *request);
-
 void tftp_get(char *file_name, char *server) {
     // Create a socket
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -61,6 +49,14 @@ void tftp_get(char *file_name, char *server) {
     // TODO: Complete this function to receive and handle DAT and ACK packets.
 }
 
+/**
+ * @brief Creates a RRQ request or a WRD request.
+ *
+ * @param opcode the operation code (RRQ or WRQ)
+ * @param file_name the name of the file to handle
+ * @param mode the transfer mode ('octet' for binary transfer)
+ * @param request the character array in which the request is stored
+ */
 void create_request(int opcode, char *file_name, char *mode, char *request) {
     int i = 0;
     request[i++] = 0;
